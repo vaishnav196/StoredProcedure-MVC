@@ -46,6 +46,7 @@ namespace StoredProcMVC.Controllers
         public IActionResult DeleteEmp(int id)
         {
             db.Database.ExecuteSqlRaw($"exec DeleteEmp {id}");
+            TempData["delete"] = "Deleteed Successfully";
             return RedirectToAction("Index");
         }
 
@@ -59,7 +60,7 @@ namespace StoredProcMVC.Controllers
         [HttpPost]
         public IActionResult UpdateEmp(Emp e)
         {
-            db.Database.ExecuteSqlRaw($"exec updateEmp {e.Id},{e.Name},{e.Salary}");
+            db.Database.ExecuteSqlRaw($"exec updateEmp '{e.Id}','{e.Name}','{e.Salary}'");
             TempData["update"] = "Employee Updated Succesfully";
             return RedirectToAction("Index");
             

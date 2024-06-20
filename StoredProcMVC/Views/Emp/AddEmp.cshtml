@@ -6,7 +6,10 @@
 <h1>AddEmp</h1>
 
 
-
+@if (TempData["msg"] != null)
+{
+    @TempData["msg"]
+}
 <hr />
 <div class="row">
     <div class="col-md-4">
